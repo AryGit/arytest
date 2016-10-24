@@ -1,0 +1,20 @@
+.footer {
+  background-color: #F5F5F5;
+  padding: 10px 0px 0px 0px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.chosen-select {
+  width: 85%;
+}
+
+.add-another {
+  padding: 4px;
+}
+
+@media (min-width:768px) {
+  .chosen-select {
+    width: 95%;
+  }
+}

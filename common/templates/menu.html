@@ -1,0 +1,78 @@
+<!-- Static navbar -->
+</style>
+{% if user.is_authenticated %}
+<div class="navbar navbar-default navbar-static-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>      
+        </button>
+     
+      <a href="" class="navbar-brand"><b></b></a></div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+		
+		<li class="acive">
+        <li class="alert-success"><a href="/"><strong>Inicio</strong></a></li>
+		{% endif %}
+		{% if user.is_authenticated and user.is_superuser%}
+	    <li><a href=""> Información </a></li>
+        <li><a href="adicionar_Modelado">Nuevo Modelado</a></li>
+        <li><a href="listar_Modelados">Ver Modelado</a></li>
+        <li><a href="adicionar_Reporte">Nuevo Reporte</a></li>
+        <li><a href="listar_Reportes">Ver Reporte</a></li> 
+        <li>
+          <form class="navbar-form" role="form" action="" method="get">
+            <div class="form-group">
+              <input type="text" placeholder="Buscar" class="form-control" name="q">
+            </div>
+            <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-search"></span></button>
+          </form>
+        </li>
+        {% endif %}
+        {% if user.is_authenticated and not user.is_superuser %}
+        <li><a href="listar_Modelados">Ver Modelado</a></li>
+        <li><a href="listar_Reportes">Ver Reporte</a></li> 
+<!--
+        <li><a href=""></a></li> 
+        <li><a href=""></a></li> 
+        <li><a href=""></a></li> 
+        <li><a href=""></a></li> 
+        <li><a href=""></a></li> 
+        <li><a href=""></a></li> 
+        <li><a href=""></a></li> 
+        <li><a href=""></a></li> 
+        <li><a href=""></a></li> 
+        <li><a href=""></a></li> 
+        <li><a href=""></a></li> 
+        <li><a href=""></a></li> 
+        <li><a href=""></a></li>  
+-->
+        <li
+          <form class="navbar-form" role="form" action="" method="get"  >
+            <div class="form-group">
+              <input type="text" placeholder="Buscar" class="form-control " name="q">
+            </div>
+            <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-search"></span></button>
+          </form>
+        </li>
+      </ul>
+       {% endif %}
+      {% if user.is_authenticated %}
+      <!-- user dropdown starts -->
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b class="text-success">{{ user }}</b> <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/logout/"><b class="text-success">Salir</b></a></li>
+          </ul>
+        </li>
+      </ul
+      ><!-- user dropdown ends -->
+      {% endif %}  
+      </div><!--/.nav-collapse -->
+  </div>
+</div>

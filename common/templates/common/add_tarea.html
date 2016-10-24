@@ -1,0 +1,32 @@
+{% extends 'common/base.html' %}
+
+{% load bootstrap3 %}
+
+{% block content %}
+<div class="wrapper row2">
+  <div id="container" class="container-fluid">
+    <div class="row">
+	  <div class="col-md-6">
+        <form action="" method="post" role="form" >
+		  {% csrf_token %}
+		  <center><legend>Insertar Nueva Tarea</legend></center>
+		  {% bootstrap_form form %}	
+		  <button type="submit" class="btn btn-primary">Aceptar</button>
+	      <button type="reset" class="btn btn-default">Cancelar</button>
+		</form>
+	  </div>
+	  <div class="col-md-6">
+		<center><legend>Mis Tareas:</legend></center>
+		{% for tarea in user.tarea_set.all %}
+		<ul class="list-group">
+		  <li class="list-group-item"><a href="{% url 'edit_tarea' pk=tarea.pk %}">{{ tarea.nombre }}</a> <span class="badge">{{ tarea.realizada|yesno:"realizada,pendiente" }}</span></li>
+		</ul>
+		{% endfor %}
+	  </div>
+	</div>
+  </div>
+</div>
+{% endblock %}
+
+
+

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+
+{% block contenido %}
+{% if user.is_authenticated %}
+<div>
+{% if mensaje %}
+	
+	{{ mensaje }}
+		
+{% else %}		
+			<p>La tarea ha sido eliminada con &eacute;xito <a href='/'>Salir</a></p>
+	
+
+	{% endif %}
+	
+</div>
+{% else %}
+		<h1>Usted no tiene los permisos necesarios para ejecutar esta accion.</h1>
+	
+	{% endif %}
+	
+</div>
+{% endblock %}

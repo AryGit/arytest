@@ -1,0 +1,22 @@
+{% extends 'common/base.html' %}
+
+{% load bootstrap3 %}
+
+{% block content %}
+<div class="row">
+	{% if mensaje %}
+	<div class="col-md-12">
+		{% if mensaje %}<p class = "error">{{mensaje}}</p><br>{% endif %}
+	</div>
+	{% endif %}			
+	<div class="col-md-12">
+		<h3>Editar tarea</h3>
+		<hr>
+		<form action="." method="post">
+			{% csrf_token %}
+			{% bootstrap_form formTarea %}
+			<button type="submit" class="btn btn-primary">Aceptar</button>
+		</form>
+	</div>
+</div>
+{% endblock %}
