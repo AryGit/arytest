@@ -3,6 +3,7 @@
 {% load bootstrap3 %}
 
 {% block content %}
+
 <div class="wrapper row2">
   <div id="container" class="container-fluid">
     <div class="row">
@@ -15,14 +16,34 @@
 	      <button type="reset" class="btn btn-default">Cancelar</button>
 		</form>
 	  </div>
-	  <div class="col-md-6">
-		<center><legend>Mis Tareas:</legend></center>
+
+<div class="col-md-6">
+ <center><legend>Mis Tareas:</legend></center>
+<div class="table-responsive">
+  <table class="table table-hover">
+     <thead>
+        <tr>
+           <th>Tarea</th>
+           <th>Estado</th>
+           <th>Editar Tarea</th>
+           <th>Eliminar Tarea</th>
+        </tr>
+     </thead>
+     <tbody>
 		{% for tarea in user.tarea_set.all %}
-		<ul class="list-group">
-		  <li class="list-group-item"><a href="{% url 'edit_tarea' pk=tarea.pk %}">{{ tarea.nombre }}</a> <span class="badge">{{ tarea.realizada|yesno:"realizada,pendiente" }}</span></li>
-		</ul>
-		{% endfor %}
-	  </div>
+          <tr>
+             <td>{{ tarea.nombre }}</td>
+             <td><span class="badge">{{ tarea.realizada|yesno:"realizada,pendiente" }}</td>
+             <td><a href="{% url 'edit_tarea' pk=tarea.pk %}"> Editar Tarea </a></td>
+             <td><a href="{% url 'delete_tarea' pk=tarea.pk %}"> Eliminar Tarea </a></td>
+           </tr>
+        {% endfor %}
+     </tbody>
+   </table>
+</div>
+</div>
+
+
 	</div>
   </div>
 </div>
@@ -30,3 +51,7 @@
 
 
 
+
+	
+      
+     

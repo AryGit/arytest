@@ -16,9 +16,9 @@ from django.db.models import Q
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse
 import datetime
+from django.utils.timezone import utc
 from django.db.models import Count, Avg, Sum
 from django import forms
-
 from .forms import TareasForm, PerfilForm
 from .models import Tarea, Perfil
 
@@ -72,11 +72,11 @@ def editTarea(request, pk):
 @login_required
 def deleteTarea(request, pk):
 	mensaje = ""
-	fecha_actual = timezone.now()
-	
+	fecha_actual = datetime.datetime.utcnow().replace(tzinfo=utc)
 	td = get_object_or_404(Tarea, pk=pk)
 	if (td.fecha_registro_tarea < fecha_actual):
 		td.delete()
+		mensaje = "La tarea ha sido eliminada con exito"
 	else:
 		mensaje = "La tarea no es considerada como antigua, no puede ser eliminada"
 	

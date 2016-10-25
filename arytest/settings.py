@@ -141,14 +141,36 @@ AUTHENTICATION_BACKENDS = (
 # Email settings
 # For system testing, use:
 # python -m smtpd -n -c DebuggingServer localhost:25
+#original
 EMAIL_HOST = 'localhost'
 EMAIL_PORT = '25'
 SERVER_EMAIL = 'info@oxygen.com'
 EMAIL_SUBJECT_PREFIX = u'[Oxygen]'
 DEFAULT_FROM_EMAIL = 'info@oxygen.com'
+
+
+
+
 #EMAIL_HOST_USER
 #EMAIL_HOST_PASSWORD
 #EMAIL_USE_TLS
+
+#adaptacion para gmail
+#EMAIL_USE_TLS = True
+#EMAIL_HOST = 'smtp.gmail.com'
+#EMAIL_HOST_USER = 'youremail@gmail.com'
+#EMAIL_HOST_PASSWORD = 'yourpassword'
+#EMAIL_PORT = '587'
+
+
+
+#SERVER_EMAIL = 'info@oxygen.com'
+#EMAIL_SUBJECT_PREFIX = u'[Oxygen]'
+#DEFAULT_FROM_EMAIL = 'info@oxygen.com'
+
+
+
+
 
 # Auth settings
 #AUTH_PROFILE_MODULE = 'common.UserProfile'

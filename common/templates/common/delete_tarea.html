@@ -1,25 +1,15 @@
-{% extends 'base.html' %}
+{% extends 'common/base.html' %}
 
+{% load bootstrap3 %}
 
-
-{% block contenido %}
-{% if user.is_authenticated %}
-<div>
-{% if mensaje %}
-	
-	{{ mensaje }}
+{% block content %}
+<div class="row">
+	{% if mensaje %}
+	<div class="col-md-12">
+		{% if mensaje %}<div class = "alert alert-info">{{mensaje}} &nbsp;<a href="/"> Volver </a> </div><br>
 		
-{% else %}		
-			<p>La tarea ha sido eliminada con &eacute;xito <a href='/'>Salir</a></p>
-	
-
-	{% endif %}
-	
-</div>
-{% else %}
-		<h1>Usted no tiene los permisos necesarios para ejecutar esta accion.</h1>
-	
-	{% endif %}
-	
-</div>
+		
+		{% endif %}
+	</div>
+	{% endif %}			
 {% endblock %}

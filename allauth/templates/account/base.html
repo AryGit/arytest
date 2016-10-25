@@ -1,82 +1,89 @@
 {% load i18n %}
+{% load staticfiles %}
+
 <!DOCTYPE html>
     <!--[if IE 9 ]><html class="ie9"><![endif]-->
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{% block head_title %}{% endblock %}</title>
-        
-        <!-- Vendor CSS -->
-        <link href="{{ STATIC_URL }}css/animate.min.css" rel="stylesheet">
-        <link href="{{ STATIC_URL }}css/material-design-iconic-font.min.css" rel="stylesheet">
-        
-        <!-- CSS -->
-        <link href="{{ STATIC_URL }}css/roboto.css" rel="stylesheet">
-        <link href="{{ STATIC_URL }}css/app.min.1.css" rel="stylesheet">
-        <link href="{{ STATIC_URL }}css/app.min.2.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Test Nexa</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static "web/plugins/sbadmin2/vendor/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="{% static "web/plugins/sbadmin2/vendor/metisMenu/metisMenu.min.css" %}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{% static "web/plugins/sbadmin2/dist/css/sb-admin-2.css" %}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{% static "web/plugins/sbadmin2/vendor/font-awesome/css/font-awesome.min.css" %}" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
     </head>
     
-    <body class="login-content">
-        <div class="lc-block toggled" id="l-login">
-        {% block content %}{% endblock %}
-        </div>
+    <body>
+{% if user.is_authenticated %}
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+
+
+{% include "common/header.html" %}
+{% include "common/menu-izq.html" %}            
+
+          
+         </nav>  
+{% endif %} 
+        <!-- Page Content -->
         
-        <!-- Older IE warning message -->
-        <!--[if lt IE 9]>
-            <div class="ie-warning">
-                <h1 class="c-white">Warning!!</h1>
-                <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
-                <div class="iew-container">
-                    <ul class="iew-download">
-                        <li>
-                            <a href="http://www.google.com/chrome/">
-                                <img src="{{ STATIC_URL }}img/browsers/chrome.png" alt="">
-                                <div>Chrome</div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.mozilla.org/en-US/firefox/new/">
-                                <img src="{{ STATIC_URL }}img/browsers/firefox.png" alt="">
-                                <div>Firefox</div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://www.opera.com">
-                                <img src="{{ STATIC_URL }}img/browsers/opera.png" alt="">
-                                <div>Opera</div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.apple.com/safari/">
-                                <img src="{{ STATIC_URL }}img/browsers/safari.png" alt="">
-                                <div>Safari</div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
-                                <img src="{{ STATIC_URL }}img/browsers/ie.png" alt="">
-                                <div>IE (New)</div>
-                            </a>
-                        </li>
-                    </ul>
+       
+        
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+					
+		{% block content %}
+		{% endblock content %}
+
+		
+					
+					
+					
+                    
                 </div>
-                <p>Sorry for the inconvenience!</p>
-            </div>   
-        <![endif]-->
-        
-        <!-- Javascript Libraries -->
-        <script src="{{ STATIC_URL }}js/jquery.min.js"></script>
-        <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
-        
-        <script src="{{ STATIC_URL }}js/waves.min.js"></script>
-        
-        <!-- Placeholder for IE9 -->
-        <!--[if IE 9 ]>
-            <script src="{{ STATIC_URL }}js/jquery.placeholder.min.js"></script>
-        <![endif]-->
-        
-        <script src="{{ STATIC_URL }}js/functions.js"></script>
-        
-    </body>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="{% static "web/plugins/sbadmin2/vendor/jquery/jquery.min.js" %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static "web/plugins/sbadmin2/vendor/bootstrap/js/bootstrap.min.js" %}"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="{% static "web/plugins/sbadmin2/vendor/metisMenu/metisMenu.min.js" %}"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="{% static "web/plugins/sbadmin2/dist/js/sb-admin-2.js" %}"></script>
+
+</body>
+
 </html>

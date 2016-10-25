@@ -17,8 +17,8 @@ class Tarea(models.Model):
     nombre = models.CharField("Nombre de la Tarea",max_length=50)
     descripcion = models.TextField("Detalles de la Tarea")
     realizada = models.BooleanField("Realizada", help_text="¿Se encuentra realizada?", default=False)
-    fecha_registro_tarea = models.DateField("Fecha en que se registra la tarea")
-    fecha_realizada_tarea = models.DateField("Fecha en que fue realizada la tarea", null=True, blank=True)
+    fecha_registro_tarea = models.DateTimeField("Fecha en que se registra la tarea", help_text="Formato dia/mes/año Hora:Minutos", null=True, blank=True )
+    fecha_realizada_tarea = models.DateTimeField("Fecha en que fue realizada la tarea", help_text="Formato dia/mes/año Hora:Minutos", null=True, blank=True)
     
     def __unicode__(self):
         return  self.nombre + '-' + self.realizada + '-' + self.fecha_registro_tarea+ '-' + self.fecha_realizada_tarea
